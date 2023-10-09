@@ -1,0 +1,92 @@
+<div>
+    <div class="container-fluid">
+        Critères d'affichage
+        <button class="float-end" (click)="onReinitCritere()">Réinitialiser les critères</button>
+    </div>
+    <br>
+    <div class="container-fluid row">
+        <div class="col">
+            <div ngbDropdown class="d-inline-block">
+                Numéro de compte
+                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    Tous
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Action - 1</button>
+                    <button ngbDropdownItem>Another Action</button>
+                    <button ngbDropdownItem>Something else is here</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div ngbDropdown class="d-inline-block">
+                UR du compte
+                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    Toutes
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Action - 1</button>
+                    <button ngbDropdownItem>Another Action</button>
+                    <button ngbDropdownItem>Something else is here</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div ngbDropdown class="d-inline-block">
+                Type de compte
+                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    Tous
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Action - 1</button>
+                    <button ngbDropdownItem>Another Action</button>
+                    <button ngbDropdownItem>Something else is here</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="row row-cols-auto">
+            <div class="col">Période du</div>
+            <div class="col">
+                <form class="row row-cols-sm-auto">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input
+                                class="form-control"
+                                placeholder="dd/mm/yyyy"
+                                name="d2"
+                                #c2="ngModel"
+                                [(ngModel)]="model2"
+                                ngbDatepicker
+                                #d2="ngbDatepicker"
+                            />
+                            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col">au</div>
+            <div class="col">
+                <form class="row row-cols-sm-auto">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input
+                                class="form-control"
+                                placeholder="dd/mm/yyyy"
+                                name="d2"
+                                #c2="ngModel"
+                                [(ngModel)]="model2"
+                                ngbDatepicker
+                                #d2="ngbDatepicker"
+                            />
+                            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+    <br>
+    <button class="float-end" (click)="onUpdateList()">Actualiser</button>
+</div>

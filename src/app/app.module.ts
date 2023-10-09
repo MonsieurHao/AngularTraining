@@ -4,18 +4,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UtilisateursComponent } from './Composants/utilisateurs/utilisateurs.component';
 import { AgGridModule } from 'ag-grid-angular';
-//import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { CriteresComponent } from './Composants/criteres/criteres.component';
+import { TableauxComponent } from './Composants/tableaux/tableaux.component';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UtilisateursComponent
+    UtilisateursComponent,
+    TableauxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AgGridModule
+    AgGridModule,
+    NgbModule,
+    CriteresComponent
+  ],
+  exports:[
+    CriteresComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,44 +1,4 @@
-<p>Critères d'affichage</p>
 
-<button (click)="onReinitCritere()">Réinitialiser les critères</button>
+<app-criteres class="container-fluid app-header"></app-criteres>
 <br>
-<div>
-    Numéro de compte
-    <button class ="btn btn-secondary dropdown-toggle">Dropdown1</button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">2nd Action</a>
-        <a class="dropdown-item" href="#">3rd Action</a>
-
-    </div>
-        UR du compte
-        <button class ="btn btn-secondary dropdown-toggle">Dropdown2</button>
-        <div class="dropdown-menu" >
-            <a class="dropdown-item" href="#">Action B</a>
-            <a class="dropdown-item" href="#">2nd Action B</a>
-            <a class="dropdown-item" href="#">3rd Action B</a>
-    
-        </div>
-        Type de compte
-    <button class ="btn btn-secondary dropdown-toggle">Dropdown3</button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action C</a>
-        <a class="dropdown-item" href="#">2nd Action C</a>
-        <a class="dropdown-item" href="#">3rd Action C</a>
-
-    </div>
-</div>
-
-Période du          au
-
-<br>
-<button (click)="onUpdateList()">Actualiser</button>
-
-
-<ag-grid-angular
-class="ag-theme-alpine"
-style="height: 550px; width: 1350px;"
- [rowData]="rowData"
- [columnDefs]="colDefs">
-
-</ag-grid-angular>
+<app-tableaux class="container-fluid app-tables"></app-tableaux>
