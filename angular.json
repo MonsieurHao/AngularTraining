@@ -69,6 +69,7 @@
               "browserTarget": "AngularTraining:build:production"
             },
             "development": {
+              "proxyConfig": "proxy.conf.json",
               "browserTarget": "AngularTraining:build:development"
             }
           },
