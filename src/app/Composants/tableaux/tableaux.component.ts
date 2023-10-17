@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { ColDef } from 'ag-grid-community';
+import { HttpClient } from '@angular/common/http';
+import { ColDef,
+        GridReadyEvent,
+        IServerSideDatasource,
+        RowModelType,} from 'ag-grid-community';
 
 @Component({
   selector: 'app-tableaux',
@@ -21,5 +25,37 @@ export class TableauxComponent {
     {num_cotisant: 752, début_période: '15/02/2022', fin_période: '15/12/2023', type_compte: 'Temporaire', nature_activite: 'artistique', cat_cotisant: 'Catégorie 5', etat_image: 'valide'},
     {num_cotisant: 68, début_période: '03/04/2022', fin_période: '03/09/2023', type_compte: 'Permanent', nature_activite: 'comptable', cat_cotisant: 'Catégorie 1', etat_image: 'en attente'}
   ];
+
+  public defaultColDef: ColDef = {
+    flex: 1,
+    minWidth: 90,
+    resizable: true,
+  };
+  public rowModelType: RowModelType = 'serverSide';
+  public paginationPageSize = 10;
+  public cacheBlockSize = 10;
+
+  constructor(private http: HttpClient) {}
+/*
+  onGridReady(params: GridReadyEvent<IOlympicDataWithId>) {
+    this.http                                                        //change with own JSON server data
+      .get<IOlympicDataWithId[]>(
+        'https://www.ag-grid.com/example-assets/olympic-winners.json'
+      )
+      .subscribe((data) => {
+        // add id to data
+        var idSequence = 1;
+        data.forEach(function (item: any) {
+          item.id = idSequence++;
+        });
+        // setup the fake server with entire dataset
+        var fakeServer = new FakeServer(data);
+        // create datasource with a reference to the fake server
+        var datasource = getServerSideDatasource(fakeServer);
+        // register the datasource with the grid
+        params.api!.setServerSideDatasource(datasource);
+      });
+  }
+  */
   
 }
