@@ -1,14 +1,24 @@
-<ag-grid-angular
-class="ag-theme-alpine"
-style="height: 550px; width: 1350px;"
- [rowData]="rowData"
- [columnDefs]="colDefs"
- [defaultColDef]="defaultColDef"
- [rowModelType]="rowModelType"
- [pagination]="true"
- [paginationPageSize]="paginationPageSize"
- [cacheBlockSize]="cacheBlockSize"
- (gridReady)="onGridReady($event)"
->
+<!-- ajout onglets -->
+<div class="container-fluid">
+    <button class="float-end" >Exporter</button>
+</div>
+<br>
+<br>
+<div class="container-fluid">
+    <ag-grid-angular
+    class="ag-theme-alpine"
+    style="height: 800px; width: 1420px;"
+    [rowData]="rowData"
+    [columnDefs]="colDefs"
+    [pagination]="true"
+    >
+    <!--
+        [defaultColDef]="defaultColDef"
+    [rowModelType]="rowModelType"
+    [paginationPageSize]="paginationPageSize"
+    [cacheBlockSize]="cacheBlockSize"(gridReady)="onGridReady($event)"-->
 
-</ag-grid-angular>
+
+
+    </ag-grid-angular>
+</div>
