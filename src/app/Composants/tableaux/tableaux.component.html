@@ -2,6 +2,13 @@
 class="ag-theme-alpine"
 style="height: 550px; width: 1350px;"
  [rowData]="rowData"
- [columnDefs]="colDefs">
+ [columnDefs]="colDefs"
+ [defaultColDef]="defaultColDef"
+ [rowModelType]="rowModelType"
+ [pagination]="true"
+ [paginationPageSize]="paginationPageSize"
+ [cacheBlockSize]="cacheBlockSize"
+ (gridReady)="onGridReady($event)"
+>
 
 </ag-grid-angular>
