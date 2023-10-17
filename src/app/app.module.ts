@@ -7,6 +7,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { CriteresComponent } from './Composants/criteres/criteres.component';
 import { TableauxComponent } from './Composants/tableaux/tableaux.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     AgGridModule,
     NgbModule,
-    CriteresComponent
+    CriteresComponent,
+    HttpClientModule
   ],
   exports:[
     CriteresComponent
