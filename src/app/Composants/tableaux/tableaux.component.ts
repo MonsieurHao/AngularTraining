@@ -36,6 +36,26 @@ export class TableauxComponent {
   public cacheBlockSize = 10;
 */
   constructor(private http: HttpClient) {}
+
+
+ngOnInit(){
+  fetch('https://swapi.dev/api/people/',
+        { 
+            method: 'GET',
+            headers: {
+                        'Content-Type': 'application/json'
+                    }
+        }
+  ).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        dynamicallyConfigureColumnsFromObject(data.results[0])
+        gridOptions.api.setRowData(data.results);
+    })
+
+}
+
+ 
 /*
   onGridReady(params: GridReadyEvent<IOlympicDataWithId>) {
     this.http                                                        //change with own JSON server data
@@ -59,3 +79,11 @@ export class TableauxComponent {
   */
   
 }
+function dynamicallyConfigureColumnsFromObject(obj: any) {
+  const colDefs = gridOptions.api.getColumnDefs();
+    colDefs.length=0;
+    const keys = Object.keys(obj)
+    keys.forEach(key => colDefs.push({field : key}));
+    gridOptions.api.setColumnDefs(colDefs);
+}
+
