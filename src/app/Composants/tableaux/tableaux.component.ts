@@ -25,7 +25,7 @@ export class TableauxComponent {
     {num_cotisant: 752, début_période: '15/02/2022', fin_période: '15/12/2023', type_compte: 'Temporaire', nature_activite: 'artistique', cat_cotisant: 'Catégorie 5', etat_image: 'valide'},
     {num_cotisant: 68, début_période: '03/04/2022', fin_période: '03/09/2023', type_compte: 'Permanent', nature_activite: 'comptable', cat_cotisant: 'Catégorie 1', etat_image: 'en attente'}
   ];
-/*
+
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 90,
@@ -34,47 +34,12 @@ export class TableauxComponent {
   public rowModelType: RowModelType = 'serverSide';
   public paginationPageSize = 10;
   public cacheBlockSize = 10;
-*/
+  public rowData!: IClientsDataWithId[];
   constructor(private http: HttpClient) {}
 
-const gridOptions = {
-
-        defaultColDef: {
-            sortable: true,
-            filter: 'agTextColumnFilter',
-            resizable: true
-        },
-
-        columnDefs: columnDefs,
-        enableSorting: true,
-        enableFilter: true,
-        pagination: true
-    };
-  
-ngOnInit(){
-
-  //new agGrid.Grid(eGridDiv, gridOptions);
-  fetch('https://swapi.dev/api/people/',
-        { 
-            method: 'GET',
-            headers: {
-                        'Content-Type': 'application/json'
-                    }
-        }
-  ).then(function (response) {
-        return response.json();
-    }).then(function (data) {
-        dynamicallyConfigureColumnsFromObject(data.results[0])
-        gridOptions.api.setRowData(data.results);
-    })
-
-}
-
- 
-/*
-  onGridReady(params: GridReadyEvent<IOlympicDataWithId>) {
+  onGridReady(params: GridReadyEvent<IClientsDataWithId>) {
     this.http                                                        //change with own JSON server data
-      .get<IOlympicDataWithId[]>(
+      .get<IClientsDataWithId[]>(
         'https://www.ag-grid.com/example-assets/olympic-winners.json'
       )
       .subscribe((data) => {
@@ -91,14 +56,29 @@ ngOnInit(){
         params.api!.setServerSideDatasource(datasource);
       });
   }
-  */
+
+  function getServerSideDatasource(server: any): IServerSideDatasource {
+  return {
+    getRows: (params) => {
+      console.log('[Datasource] - rows requested by grid: ', params.request);
+      var response = server.getData(params.request);
+      // adding delay to simulate real server call
+      setTimeout(function () {
+        if (response.success) {
+          // call the success callback
+          params.success({
+            rowData: response.rows,
+            rowCount: response.lastRow,
+          });
+        } else {
+          // inform the grid request failed
+          params.fail();
+        }
+      }, 200);
+    },
+  };
+}
   
 }
-function dynamicallyConfigureColumnsFromObject(obj: any) {
-  const colDefs = gridOptions.api.getColumnDefs();
-    colDefs.length=0;
-    const keys = Object.keys(obj)
-    keys.forEach(key => colDefs.push({field : key}));
-    gridOptions.api.setColumnDefs(colDefs);
-}
+
 
