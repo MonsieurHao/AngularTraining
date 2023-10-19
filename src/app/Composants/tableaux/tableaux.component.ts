@@ -37,8 +37,23 @@ export class TableauxComponent {
 */
   constructor(private http: HttpClient) {}
 
+const gridOptions = {
 
+        defaultColDef: {
+            sortable: true,
+            filter: 'agTextColumnFilter',
+            resizable: true
+        },
+
+        columnDefs: columnDefs,
+        enableSorting: true,
+        enableFilter: true,
+        pagination: true
+    };
+  
 ngOnInit(){
+
+  //new agGrid.Grid(eGridDiv, gridOptions);
   fetch('https://swapi.dev/api/people/',
         { 
             method: 'GET',
