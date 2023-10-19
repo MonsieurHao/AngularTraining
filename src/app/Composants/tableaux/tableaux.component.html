@@ -11,15 +11,11 @@
     [rowData]="rowData"
     [columnDefs]="colDefs"
     [pagination]="true"
-    
-    >
-    <!--
-        [defaultColDef]="defaultColDef"
+    [defaultColDef]="defaultColDef"
     [rowModelType]="rowModelType"
+    [animateRows]="true"
     [paginationPageSize]="paginationPageSize"
-    [cacheBlockSize]="cacheBlockSize"(gridReady)="onGridReady($event)"-->
-
-
-
-    </ag-grid-angular>
+    [cacheBlockSize]="cacheBlockSize"
+    (gridReady)="onGridReady($event)"
+    ></ag-grid-angular>
 </div>
