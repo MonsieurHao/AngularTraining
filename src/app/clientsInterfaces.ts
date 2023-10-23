@@ -4,8 +4,8 @@ export interface IClientsDataWithId extends IClientsData {
 
 export interface IClientsData {
    num_cotisant: number;
-   début_période: date; 
-   fin_période: date; 
+   début_période: Date; 
+   fin_période: Date; 
    type_compte: string;
    nature_activite: string;
    cat_cotisant: string;
