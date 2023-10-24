@@ -2,19 +2,23 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UtilisateursComponent } from './Composants/utilisateurs/utilisateurs.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { CriteresComponent } from './Composants/criteres/criteres.component';
 import { TableauxComponent } from './Composants/tableaux/tableaux.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { OngletsComponent } from './Composants/onglets/onglets.component';
+import { StoreComponent } from './Composants/store/store.component';
+import { PaginationComponent } from './Composants/pagination/pagination.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UtilisateursComponent,
-    TableauxComponent
+    TableauxComponent,
+    OngletsComponent,
+    StoreComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
