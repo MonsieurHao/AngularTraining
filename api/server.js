@@ -7,7 +7,7 @@ server.use(middlewares);
 
 //for token based security purpose
 server.use(jsonServer.bodyParser);
-server.use((req, res, next) => {
+/*server.use((req, res, next) => {
     if(req.path.startsWith("/users") && 
         req.headers["authorization"] !== "Bearer abcd")
     {
@@ -15,7 +15,7 @@ server.use((req, res, next) => {
     }
     next();
 })
-
+*/
 server.use(router);
 
 server.listen(3000, ()=>{

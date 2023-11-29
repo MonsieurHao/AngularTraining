@@ -1,0 +1,56 @@
+<div class="search">
+    <form [formGroup]="searchForm">
+        <div class="row">
+            <div class="col">
+                <h4><i class="bi bi-bullseye blue-color"></i> Critères d'affichage</h4>
+            </div>
+            <div class="col d-flex flex-row-reverse">
+                <button (click)="onReinit()" class="bi bi-clipboard-x"> Réinitialiser critères</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2">
+                <label for="numeroCompte">Numéro de compte</label>
+            </div>
+            <div class="col">
+                <select name="numeroCompte" id="numeroCompte" formControlName="num_compte">
+                    <option value="Tous">Tous</option>
+                    <option *ngFor="let num of numAccounts" [ngValue]="num">{{num}}</option>
+                </select>
+            </div>
+            <div class="col d-flex flex-row-reverse">
+                <label for="ur">UR du compte</label>
+            </div>
+            <div class="col">
+                <select name="ur" id="ur" formControlName="ur_compte">
+                    <option value="Toutes">Toutes</option>
+                    <option *ngFor="let ur of urAccounts" [ngValue]="ur">{{ur}}</option>
+                </select>
+            </div>
+            <div class="col d-flex flex-row-reverse">
+                <label for="type">Type de compte</label>
+            </div>
+            <div class="col">
+                <select name="type" id="type" formControlName="type_compte">
+                    <option value="Tous">Tous</option>
+                    <option *ngFor="let type of typeAccounts" [ngValue]="type">{{type}}</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2">
+                <label for="debPeriode">Période du</label>
+            </div>
+            <div class="col">
+                <input id="debPeriode" type="date" formControlName="deb">
+                <label for="finPeriode" style="margin-left:8px; margin-right:8px;"> au </label>
+                <input id="finPeriode" type="date" formControlName="fin">
+            </div>
+        </div>
+    </form>
+    <div class="d-flex flex-row-reverse bd-highlight">
+        <button type="button" class="bi bi-arrow-repeat" (click)="onUpdate(searchForm)"> Actualiser</button>
+    </div>
+</div>

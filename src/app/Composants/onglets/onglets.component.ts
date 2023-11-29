@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-onglets',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./onglets.component.scss']
 })
 export class OngletsComponent {
+  @Output() tabClicked= new EventEmitter<any>();
+  
+  onClick() {
+    this.tabClicked.emit();
+  }
 
 }
+

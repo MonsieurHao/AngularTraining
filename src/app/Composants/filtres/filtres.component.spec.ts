@@ -6,28 +6,30 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AccountUrssafState } from '../store/account-urssaf.state';
 import { BrowserModule } from '@angular/platform-browser';
 import { OngletsComponent } from '../onglets/onglets.component';
-
-import { TableauxComponent } from './tableaux.component';
+import { FiltresComponent } from './filtres.component';
+import {  ReactiveFormsModule } from '@angular/forms';
 import { GetAccountsAction } from '../store/account-urssaf.actions';
+import { TableauxComponent } from '../tableaux/tableaux.component';
 
-describe('TableauxComponent', () => {
-  let component: TableauxComponent;
-  let fixture: ComponentFixture<TableauxComponent>;
-  let ongletsComp: OngletsComponent;
-  let ongletsFixt: ComponentFixture<OngletsComponent>;
+describe('FiltresComponent', () => {
+  let component: FiltresComponent;
+  let fixture: ComponentFixture<FiltresComponent>;
+  let tabComp: TableauxComponent;
+  let tabFixt: ComponentFixture<TableauxComponent>;
   let store: Store;
 
   beforeEach(
     waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TableauxComponent, OngletsComponent],
+      declarations: [FiltresComponent],
       imports:[HttpClientTestingModule,
-      BrowserModule,
-      RouterTestingModule,
-      AgGridModule,
-      NgxsModule.forRoot([AccountUrssafState])]
+              BrowserModule,
+              RouterTestingModule,
+              ReactiveFormsModule,
+              NgxsModule.forRoot([AccountUrssafState])
+              ]
     }).compileComponents();
-
+    
     store = TestBed.inject(Store);
       store.reset({
         ...store.snapshot(),
@@ -123,39 +125,15 @@ describe('TableauxComponent', () => {
           }
         ]
       });
-
-    fixture = TestBed.createComponent(TableauxComponent);
+    fixture = TestBed.createComponent(FiltresComponent);
     component = fixture.componentInstance;
-    ongletsFixt = TestBed.createComponent(OngletsComponent);
-    ongletsComp = ongletsFixt.componentInstance;
+    fixture.detectChanges();
   }));
 
-  function insertData(){
-    store.dispatch(new GetAccountsAction);
-    const accounts = store.selectSnapshot(state => state.accounts);
-    fixture.detectChanges();
-    component.agGrid.api.setRowData(accounts);
-    
-  }
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should check that grid API is available', () => {
-    fixture.detectChanges();
-    expect(component.agGrid.api).toBeTruthy();
-    expect(component.agGrid.api.getColumnDefs()).toBeTruthy();
-  });
-
-  it('should check data in accounts state and insert it in grid', ()=>{
-    insertData();
-    const accounts = store.selectSnapshot(state => state.accounts);
-    component.agGrid.api.selectAll();
-    
-    expect(accounts.length).toBe(9);
-    expect(component.agGrid.api.getSelectedRows().length).toBe(9);
-  });
-
-
+  
 });

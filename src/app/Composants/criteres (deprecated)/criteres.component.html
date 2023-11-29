@@ -1,0 +1,111 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <h4>
+            Critères d'affichage
+        </h4>
+        <button class="float-end" (click)="onReinitCritere()">
+            Réinitialiser les critères
+        </button>
+    </div>
+    <br>
+    <div class="container-fluid row">
+        <div class="col">
+            <div ngbDropdown class="d-inline-block">
+                Numéro de compte
+                <button ngbDropdownToggle  
+                type="button" 
+                class="btn btn-secondary dropdown-toggle" 
+                id="dropdownMenuButton" 
+                aria-expanded="false">
+                    Tous
+                </button>
+                <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton" >
+                    <li *ngFor = "let id of accounts">
+                        <a class="ngbDropdownItem" href="#" style="all:unset">{{id}}</a>
+                    </li>                                                              
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <div ngbDropdown class="d-inline-block">
+                UR du compte
+                <button ngbDropdownToggle  
+                type="button" 
+                class="btn btn-secondary dropdown-toggle" 
+                id="dropdownMenuButton" 
+                aria-expanded="false">
+                    Toutes
+                </button>
+                <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton" >
+                    <li *ngFor = "let id of accountsUR">
+                        <a class="ngbDropdownItem" href="#" style="all:unset">{{id}}</a>
+                    </li>                                                              
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <div ngbDropdown class="d-inline-block">
+                Type de compte
+                <button ngbDropdownToggle  
+                type="button" 
+                class="btn btn-secondary dropdown-toggle" 
+                id="dropdownMenuButton" 
+                aria-expanded="false">
+                    Tous
+                </button>
+                <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton" >
+                    <li *ngFor = "let id of accountTypes">
+                        <a class="ngbDropdownItem" href="#" style="all:unset">{{id}}</a>
+                    </li>                                                              
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="row row-cols-auto">
+            <div class="col">Période du</div>
+            <div class="col">
+                <form class="row row-cols-sm-auto">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input
+                                class="form-control"
+                                placeholder="dd/mm/yyyy"
+                                name="d1"
+                                #c1="ngModel"
+                                [(ngModel)]="model1"
+                                ngbDatepicker
+                                #d1="ngbDatepicker"
+                            />
+                            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d1.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col">au</div>
+            <div class="col">
+                <form class="row row-cols-sm-auto">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input
+                                class="form-control"
+                                placeholder="dd/mm/yyyy"
+                                name="d2"
+                                #c2="ngModel"
+                                [(ngModel)]="model2"
+                                ngbDatepicker
+                                #d2="ngbDatepicker"
+                            />
+                            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button class="float-end" (click)="onUpdateList()">
+            <i class="bi bi-arrow-clockwise"></i>Actualiser
+        </button>
+    </div>
+</div>

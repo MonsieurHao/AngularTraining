@@ -1,21 +1,18 @@
-<!-- ajout onglets -->
-<div class="container-fluid">
-    <button class="float-end" >Exporter</button>
-</div>
-<br>
-<br>
-<div class="container-fluid">
-    <ag-grid-angular
-    class="ag-theme-alpine"
-    style="height: 800px; width: 1420px;"
-    [rowData]="rowData"
+<app-onglets (tabClicked)="exportToCsv()"></app-onglets>
+<div class ="container">
+<ag-grid-angular
+    class="ag-theme-alpine pt-2"
+    style="height: 800px; width: 100%;"
     [columnDefs]="colDefs"
-    [pagination]="true"
     [defaultColDef]="defaultColDef"
-    [rowModelType]="rowModelType"
+    [rowData]="rowData$ | async"
+    [rowSelection]="'multiple'"
     [animateRows]="true"
+    [pagination]="true"
     [paginationPageSize]="paginationPageSize"
-    [cacheBlockSize]="cacheBlockSize"
     (gridReady)="onGridReady($event)"
-    ></ag-grid-angular>
+    
+></ag-grid-angular>
+
 </div>
+
